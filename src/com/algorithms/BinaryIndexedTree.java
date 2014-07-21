@@ -1,5 +1,14 @@
 package com.algorithms;
 
+/**
+ * Explanation of BIT:
+ * 
+ * http://apps.topcoder.com/forums/?module=Thread&threadID=715842&start=0&mc=8
+ * 
+ * @author doom
+ *
+ */
+
 public class BinaryIndexedTree {
 
 	private int N;

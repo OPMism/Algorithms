@@ -25,8 +25,8 @@ public class LongestCommonSubSequence {
 		str1 = "ACCGGTCGAGTGCGCGGAAGCCGGCCGAA";
 		str2 = "GTCGTTCGGAATGCCGTTGCTCTGTAAA";
 		
-		str1 = "AGGTAB";
-		str2 = "GXTXAYB";
+//		str1 = "AGGTAB";
+//		str2 = "GXTXAYB";
 
 		System.out.println("The two strings are:\n" + str1 + "\n" + str2);
 

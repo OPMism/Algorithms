@@ -2,6 +2,8 @@ package com.dp;
 
 public class MatrixChainMultiplication {
 
+	private static int[][] dp;
+
 	public static void main(String[] args) {
 		int[] dim;
 		int n;
@@ -19,7 +21,34 @@ public class MatrixChainMultiplication {
 		dim[6] = 25;
 
 		matrixChainMultiplication(dim, n);
+		dp = new int[n + 1][n + 1];
 
+		System.out.println("Total operations evaluated by recursive dp: "
+				+ matrixChainMulRec(dim, 0, n - 1));
+
+	}
+
+	public static int matrixChainMulRec(int[] dim, int i, int j) {
+		int k;
+		int op;
+
+		if (i == j)
+			return 0;
+
+		if (dp[i][j] != 0)
+			return dp[i][j];
+
+		op = Integer.MAX_VALUE;
+
+		for (k = i; k < j; k++) {
+			op = Math.min(op, matrixChainMulRec(dim, i, k) + dim[i]
+					* dim[k + 1] * dim[j + 1]
+					+ matrixChainMulRec(dim, k + 1, j));
+		}
+
+		dp[i][j] = op;
+
+		return op;
 	}
 
 	public static void matrixChainMultiplication(int[] dim, int n) {
@@ -65,6 +94,8 @@ public class MatrixChainMultiplication {
 		}
 
 		printOptimalSol(sol, 0, n - 1);
+
+		System.out.println("\nTotal number of operations: " + dp[0][n - 1]);
 
 		return;
 
