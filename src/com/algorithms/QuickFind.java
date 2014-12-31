@@ -17,8 +17,10 @@ public class QuickFind {
 	}
 
 	public void connect(int p, int q) {
+		if (connected(p, q))
+			return;
 		for (int i = 0; i < N; i++) {
-			if (id[i] == p)
+			if (id[i] == id[p])
 				id[i] = id[q];
 		}
 	}
