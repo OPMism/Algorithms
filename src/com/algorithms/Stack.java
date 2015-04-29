@@ -85,5 +85,15 @@ public class Stack<Item> implements Iterable<Item> {
 		}
 
 	}
+	
+	public static void main (String [] args) {
+		Stack<Integer> stack = new Stack<>();
+		
+		stack.push(4);
+		stack.push(10);
+		
+		for (int v : stack)
+			System.out.println(v);
+	}
 
 }

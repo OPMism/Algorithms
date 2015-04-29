@@ -16,6 +16,13 @@ public class LCA {
 	}
 }
 
+/**
+ * LCA using square root decomposition
+ * 
+ * @author sultan.of.swing
+ *
+ */
+
 class SqrtLCA {
 	public int mAncestor[];
 	public int mLevel[];

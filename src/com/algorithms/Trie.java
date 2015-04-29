@@ -10,18 +10,8 @@ public class Trie<Value> {
 	private static int R = 256;
 
 	private static class Node {
-
 		private Node next[] = new Node[R];
 		private Object value;
-
-		// public Node() {
-		// this.next = (Node []) new Object[256];
-		// }
-		//
-		// public Node(Object item) {
-		// this.item = item;
-		// this.next = (Node []) new Object[256];
-		// }
 	}
 
 	public void put(String str, Value val) {
@@ -90,10 +80,11 @@ public class Trie<Value> {
 
 		node.next[c] = delete(node.next[c], str, index + 1);
 
-		if (node.next[c] == null && node.value == null)
-			return null;
+		for (int i = 0; i < R; i++)
+			if (node.next[i] != null)
+				return node;
 
-		return node;
+		return null;
 	}
 
 	public Iterator<String> collect() {
@@ -141,16 +132,16 @@ public class Trie<Value> {
 
 		mTrie.put("Flabbergasted he was entirely", 120);
 		mTrie.put("It's very surprising", 21);
-		
+
 		mTrieIterator = mTrie.collect();
 
 		while (mTrieIterator.hasNext())
 			System.out.println(mTrieIterator.next());
 
 		mTriePrefixIterator = mTrie.keysWithPrefix("I");
-		
+
 		System.out.println("\nPrinting all prefixes: ");
-		
+
 		while (mTriePrefixIterator.hasNext())
 			System.out.println(mTriePrefixIterator.next());
 

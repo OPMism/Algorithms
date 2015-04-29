@@ -88,6 +88,14 @@ public class KruskalsMST {
 		
 		kMST = new KruskalsMST(G);
 		
+		System.out.println("MST:");
+		
+		for (Edge e: kMST.mst) {
+			int u = e.either();
+			int v = e.other(u);
+			System.out.println(u + " " + v + " " + e.weight());
+		}
+		
 		return;
 		
 	}
