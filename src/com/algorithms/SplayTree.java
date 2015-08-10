@@ -72,6 +72,9 @@ public class SplayTree<K extends Comparable<K>> {
 		if (!contains(key))
 			return false;
 
+		// The contains check operation would have brought the desired node to
+		// the root. We need to delete the root node now.
+
 		Node node = root;
 
 		if (node.right == null) {
@@ -126,6 +129,13 @@ public class SplayTree<K extends Comparable<K>> {
 		return node != null;
 	}
 
+	/**
+	 * Finds a node with key "key" and splays it to the top. In case "key" is
+	 * not present in the node, splay the last node found in the search path.
+	 * 
+	 * @param key
+	 * @return
+	 */
 	private Node find(K key) {
 
 		if (root == null)
@@ -152,6 +162,12 @@ public class SplayTree<K extends Comparable<K>> {
 		return node;
 	}
 
+	/**
+	 * Splay function applies the zig-zig or zig-zag operations to splay the
+	 * given node to the root.
+	 * 
+	 * @param node
+	 */
 	public void splay(Node node) {
 
 		if (node == null)
@@ -189,6 +205,20 @@ public class SplayTree<K extends Comparable<K>> {
 		root = node;
 	}
 
+	/**
+	 * N is the node to rotate
+	 * 
+	 *          G                G
+	 *         / \              / \
+	 *        P   Y    ==      N   Y
+	 *       / \              / \
+	 *      N   X            L   P
+	 *     / \                  / \
+	 *    L   R                R   X
+	 * 
+	 * @param parent is node P
+	 * 
+	 */
 	public void rotateRight(Node parent) {
 		Node left = parent.left;
 		Node leftRightChild = left.right;
@@ -211,6 +241,19 @@ public class SplayTree<K extends Comparable<K>> {
 		}
 	}
 
+	/**
+	 * N is the node to rotate
+	 * 
+	 *     G                G
+	 *    / \              / \
+	 *   P   Y    ==      N   Y
+	 *  / \              / \
+	 * X   N            P   R
+	 *    / \          / \
+	 *   L   R        X   L
+	 * 
+	 * @param parent is node P
+	 */
 	public void rotateLeft(Node parent) {
 		Node right = parent.right;
 		Node rightLeftChild = right.left;
