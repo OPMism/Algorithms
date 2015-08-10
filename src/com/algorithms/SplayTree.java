@@ -182,21 +182,21 @@ public class SplayTree<K extends Comparable<K>> {
 					rotateLeft(node.parent);
 			} else if (node.parent.left == node
 					&& node.parent.parent.left == node.parent) {
-				// Zig Zig - Left left (Rotate grandparent first)
+				// Zig Zig - Left left (Rotate grandparent first) [Top to bottom traversal]
 				rotateRight(node.parent.parent);
 				rotateRight(node.parent);
 			} else if (node.parent.right == node
 					&& node.parent.parent.right == node.parent) {
-				// Zig Zig - Right Right
+				// Zig Zig - Right Right (Rotate grandparent first) [Top to bottom traversal]
 				rotateLeft(node.parent.parent);
 				rotateLeft(node.parent);
 			} else if (node.parent.left == node
 					&& node.parent.parent.right == node.parent) {
-				// Zig Zag - Right Left
+				// Zig Zag - Right Left [Top to bottom traversal]
 				rotateRight(node.parent);
 				rotateLeft(node.parent);
 			} else {
-				// Zig Zag - Left Right
+				// Zig Zag - Left Right [Top to bottom traversal]
 				rotateLeft(node.parent);
 				rotateRight(node.parent);
 			}
